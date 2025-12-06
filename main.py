@@ -16,10 +16,21 @@ def display_contacts():
         for i, c in enumerate(contacts, 1):
             print(f"{i}. Tên: {c['name']} | SĐT: {c['phone']} | Email: {c['email']}")
 
+def search_contact():
+    print("\n--- TÌM KIẾM ---")
+    keyword = input("Nhập tên cần tìm: ").lower()
+    found = False
+    for c in contacts:
+        if keyword in c['name'].lower():
+            print(f"-> TÌM THẤY: {c['name']} - {c['phone']}")
+            found = True
+    if not found: print("-> Không tìm thấy.")
+
 if __name__ == "__main__":
     while True:
-        print("\n1. Thêm | 2. Hiển thị | 3. Thoát")
+        print("\n1. Thêm | 2. Hiển thị | 3. Tìm kiếm | 4. Thoát")
         choice = input("Chọn: ")
         if choice == '1': add_contact()
         elif choice == '2': display_contacts()
-        elif choice == '3': break
+        elif choice == '3': search_contact()
+        elif choice == '4': break
